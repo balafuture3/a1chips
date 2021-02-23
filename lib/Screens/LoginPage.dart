@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:a1chips/Model/Login.dart';
+import 'package:a1chips/Screens/Dashboard.dart';
 import 'package:a1chips/Widgets/AllWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +30,7 @@ class LoginPageState extends State<LoginPage> {
     });
     var url;
 
-    url = String_values.base_url;
+    url = String_Values.base_url;
 
     var response = await http.get(
       url,
@@ -54,7 +55,7 @@ class LoginPageState extends State<LoginPage> {
     });
     var url;
 
-    url = String_values.base_url + 'login';
+    url = String_Values.base_url + 'login';
     Map data = {
       "email": EmailController.text,
       "password": PasswordController.text
@@ -138,68 +139,71 @@ class LoginPageState extends State<LoginPage> {
           ? Center(child: CircularProgressIndicator())
           : Container(
               height: height,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color.fromRGBO(162, 206, 41, 1),
-                      Colors.white,
-                      Colors.white,
-                      Colors.white,
-                      Colors.white,
-                      Color.fromRGBO(162, 206, 41, 1),
-                    ]),
-              ),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(width / 3)),
+                        gradient: RadialGradient(colors: [
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          Colors.white.withOpacity(1),
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          Colors.white.withOpacity(1),
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                        ]),
+                      ),
                       child: Center(
                         child: Column(
                           children: [
                             SizedBox(
-                              height: height / 10,
+                              height: height / 18,
                             ),
                             Container(
                                 padding: EdgeInsets.only(
                                     left: width / 4, right: width / 4),
                                 child: Widgetsfield().myImageAsset("logo.png",
-                                    () {}, context, height / 4, width)),
-                            SizedBox(
-                              height: height / 30,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 16.0),
+                                    () {}, context, height / 4, width / 4)),
+                            Container(
+                              width: width,
+                              padding: const EdgeInsets.only(right: 24.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  // Text(
-                                  //   "Minmegam ",
-                                  //   style: TextStyle(
-                                  //     fontSize: 16.0,
-                                  //     fontWeight: FontWeight.bold,
-                                  //     color: Colors.white,
-                                  //   ),
-                                  // ),
-                                  Text(
-                                    "Ortho ",
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Text(
-                                    "Dental",
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: String_values.primarycolor,
-                                    ),
+                                  Stack(
+                                    children: <Widget>[
+//                                      Text(
+//                                        'Login',
+//                                        textAlign: TextAlign.center,
+//                                        style: TextStyle(
+//                                            color: Colors.white,
+//                                            fontWeight: FontWeight.bold,
+//                                            fontSize: 18.0),
+//                                      ),
+                                      Text(
+                                        'Login',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            foreground: Paint()
+                                              ..color = Colors.white
+                                              ..style = PaintingStyle.stroke
+                                              ..strokeWidth = 0.8,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18.0),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
+                            ),
+                            SizedBox(
+                              height: height / 25,
                             ),
                           ],
                         ),
@@ -235,7 +239,12 @@ class LoginPageState extends State<LoginPage> {
                       height: height / 20,
                     ),
                     Widgetsfield().myButton("Login", () {
-                      postRequest();
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Dashboard()),
+                          (route) => false);
+//                      postRequest();
 //                      getRequest();
                     }, width / 2)
                   ],

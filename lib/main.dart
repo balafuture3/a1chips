@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'Screens/LoginPage.dart';
+import 'Screens/Test.dart';
+
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  Map<int, Color> color =
-  {
-    50:Color.fromRGBO(178, 45, 48, .1),
-    100:Color.fromRGBO(178, 45, 48, .2),
-    200:Color.fromRGBO(178, 45, 48, .3),
-    300:Color.fromRGBO(178, 45, 48, .4),
-    400:Color.fromRGBO(178, 45, 48, .5),
-    500:Color.fromRGBO(178, 45, 48, .6),
-    600:Color.fromRGBO(178, 45, 48, .7),
-    700:Color.fromRGBO(178, 45, 48, .8),
-    800:Color.fromRGBO(178, 45, 48, .9),
-    900:Color.fromRGBO(178, 45, 48, 1),
+  Map<int, Color> color = {
+    50: Color.fromRGBO(178, 45, 48, .1),
+    100: Color.fromRGBO(178, 45, 48, .2),
+    200: Color.fromRGBO(178, 45, 48, .3),
+    300: Color.fromRGBO(178, 45, 48, .4),
+    400: Color.fromRGBO(178, 45, 48, .5),
+    500: Color.fromRGBO(178, 45, 48, .6),
+    600: Color.fromRGBO(178, 45, 48, .7),
+    700: Color.fromRGBO(178, 45, 48, .8),
+    800: Color.fromRGBO(178, 45, 48, .9),
+    900: Color.fromRGBO(178, 45, 48, 1),
   };
 
   // This widget is the root of your application.
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginPage(),
     );
   }
 }
