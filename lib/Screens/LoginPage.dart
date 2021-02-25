@@ -144,6 +144,13 @@ class LoginPageState extends State<LoginPage> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(0.0, 5.0), //(x,y)
+                            blurRadius: 6.0,
+                          ),
+                        ],
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(width / 3)),
                         gradient: RadialGradient(colors: [

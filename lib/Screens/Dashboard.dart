@@ -1,3 +1,4 @@
+import 'package:a1chips/Screens/Categories.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,24 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   int _current = 0;
+  List<Categories> Categoryimages = [
+    Categories("Chips",
+        "https://buya1chips.com/wp-content/uploads/2020/10/4-Cut-Banana-Chips-300x300.jpg"),
+    Categories("Mixture",
+        "https://buya1chips.com/wp-content/uploads/2018/11/Corn-Mixture-Classic-300x300.jpg"),
+    Categories("Muruku",
+        "https://buya1chips.com/wp-content/uploads/2019/03/Murukku-pack-300x300.jpg"),
+    Categories("Pakoda",
+        "https://buya1chips.com/wp-content/uploads/2019/03/Crispy-Thins-Pouch-300x300.jpg"),
+    Categories("Pickles",
+        "https://buya1chips.com/wp-content/uploads/2020/12/Amla-Pickle-1-300x300.jpg"),
+    Categories("Magic Mixes",
+        "https://buya1chips.com/wp-content/uploads/2020/12/Idli-Dosa-Powder-1-300x300.jpg"),
+    Categories("Puffed Snacks",
+        "https://buya1chips.com/wp-content/uploads/2020/07/Cheese-Balls-300x300.jpg"),
+    Categories("Biscuits",
+        "https://buya1chips.com/wp-content/uploads/2020/06/BEANS-BISCUIT-CROP-300x300.jpg"),
+  ];
 
   var _selectedIndex = 0;
 
@@ -32,7 +51,149 @@ class _DashboardState extends State<Dashboard> {
     ];
 
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    child: Image.asset("logo.png"),
+                    maxRadius: 40,
+                    backgroundColor: Colors.white,
+                  ),
+                  SizedBox(
+                    height: height / 30,
+                  ),
+                  Text(
+                    'Welcome ${LoginPageState.EmailController.text}',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              decoration: BoxDecoration(
+                color: String_Values.primarycolor,
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: String_Values.primarycolor,
+              ),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboard()),
+                  (Route<dynamic> route) => false,
+                );
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: String_Values.primarycolor,
+              ),
+              title: Text('Shop By Category'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.local_offer,
+                color: String_Values.primarycolor,
+              ),
+              title: Text("Today's Deal"),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            Divider(
+              thickness: 1,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.bookmarks,
+                color: String_Values.primarycolor,
+              ),
+              title: Text("My Orders"),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.account_circle,
+                color: String_Values.primarycolor,
+              ),
+              title: Text("My Account"),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.shopping_cart,
+                color: String_Values.primarycolor,
+              ),
+              title: Text("My Cart"),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.notifications,
+                color: String_Values.primarycolor,
+              ),
+              title: Text("My Notifications"),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            Divider(
+              thickness: 1,
+            ),
+            ListTile(
+              title: Text("Logout"),
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  (Route<dynamic> route) => false,
+                ); // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: Text("Settings"),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: Text("Privacy Policy"),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+          ],
+        ),
+      ),
       body: Container(
         color: String_Values.primarycolor,
         child: SafeArea(
@@ -57,23 +218,76 @@ class _DashboardState extends State<Dashboard> {
                       expandedHeight: 60.0,
                       floating: true,
                       pinned: false,
-                      title: Image.asset(
-                        "logo.png",
-                        height: AppBar().preferredSize.height,
+                      title: Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                gradient: RadialGradient(colors: [
+                              Colors.white,
+                              Colors.white,
+                              String_Values.primarycolor,
+                              Colors.white,
+                              String_Values.primarycolor,
+                              String_Values.primarycolor,
+//                          String_Values.primarycolor,
+                            ])),
+                            child: Image.asset(
+                              "logo.png",
+                              height: AppBar().preferredSize.height,
+                            ),
+                          ),
+                          Stack(
+                            children: <Widget>[
+                              // Stroked text as border.
+                              Text(
+                                'a-1 chips',
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 18,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 2
+                                    ..color = Colors.white,
+                                ),
+                              ),
+                              // Solid text as fill.
+                              Text(
+                                'a-1 chips',
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 18,
+                                  color: String_Values.primarycolor,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                      flexibleSpace: FlexibleSpaceBar(
+                      flexibleSpace: Container(
+                        child: FlexibleSpaceBar(
 //                    centerTitle: true,
 //                          title: Image.asset(
 //                            "logo.png",
 //                            height: AppBar().preferredSize.height,
 //                          ),
-                          background: Container(
-                        color: String_Values.primarycolor,
-                      )),
+                            background: Container()),
+                      ),
                     ),
                     SliverPersistentHeader(
                       delegate: _SliverAppBarDelegate(Container(
-                        color: String_Values.primarycolor,
+                        decoration: BoxDecoration(
+                            gradient: RadialGradient(colors: [
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+//                          Colors.white,
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                          String_Values.primarycolor,
+                        ])),
                         child: Column(
                           children: [
                             Container(
@@ -114,31 +328,84 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ),
                             Container(
-                              color: Colors.white,
-                              margin: EdgeInsets.only(top: 10),
-                              height: AppBar().preferredSize.height,
-                              width: width,
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.category,
-                                          size: 30,
-                                        ),
-                                        onPressed: () {},
-                                      ),
-                                      Text("Categories"),
-                                    ],
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(0.0, 2.0), //(x,y)
+                                    blurRadius: 6.0,
                                   ),
-                                  Icon(Icons.category),
-                                  Icon(Icons.category),
-                                  Icon(Icons.category),
-                                  Icon(Icons.category),
-                                  Icon(Icons.category),
-                                  Icon(Icons.category),
                                 ],
+                              ),
+                              padding: EdgeInsets.all(5),
+                              margin: EdgeInsets.only(
+                                top: 10,
+                              ),
+                              height: AppBar().preferredSize.height * 1.2,
+                              width: width,
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        CategoriesPage()));
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: 10),
+                                        child: Column(
+                                          children: [
+                                            Icon(
+                                              Icons.list,
+                                              color: String_Values.primarycolor,
+                                              size: AppBar()
+                                                      .preferredSize
+                                                      .height /
+                                                  1.5,
+                                              semanticLabel: "Categories",
+                                            ),
+                                            SizedBox(height: 5),
+                                            Text(
+                                              "All Categories",
+                                              style: TextStyle(fontSize: 12),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    for (int i = 0;
+                                        i < Categoryimages.length;
+                                        i++)
+                                      Container(
+                                        margin: EdgeInsets.only(right: 10),
+                                        child: Column(
+                                          children: [
+                                            Image.network(
+                                              Categoryimages[i].url,
+                                              height: AppBar()
+                                                      .preferredSize
+                                                      .height /
+                                                  1.3,
+                                              width: AppBar()
+                                                      .preferredSize
+                                                      .height /
+                                                  1.3,
+                                            ),
+                                            Text(
+                                              Categoryimages[i].title,
+                                              style: TextStyle(fontSize: 12),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -151,8 +418,6 @@ class _DashboardState extends State<Dashboard> {
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: MediaQuery.of(context).size.height / 50),
-
                       CarouselSlider(
                           items: imgList
                               .map((item) => Container(
@@ -163,11 +428,11 @@ class _DashboardState extends State<Dashboard> {
                                         ),
                                         fit: BoxFit.fill,
                                       ),
-                                      border: Border.all(
-                                          color: String_Values.primarycolor,
-                                          width: 2),
+//                                      border: Border.all(
+////                                          color: String_Values.primarycolor,
+//                                          width: 2),
                                       borderRadius: BorderRadius.all(
-                                          Radius.circular(width / 8)),
+                                          Radius.circular(width / 20)),
                                     ),
                                     margin: EdgeInsets.only(top: 16),
                                   ))
@@ -190,19 +455,24 @@ class _DashboardState extends State<Dashboard> {
                             enlargeCenterPage: true,
                             scrollDirection: Axis.horizontal,
                           )),
+                      SizedBox(height: MediaQuery.of(context).size.height / 50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: imgList.map((url) {
                           int index = imgList.indexOf(url);
                           return Container(
-                            width: _current == index ? 10 : 8.0,
-                            height: _current == index ? 10 : 8.0,
+                            width: _current == index ? 15 : 8.0,
+                            height: _current == index ? 8 : 8.0,
                             margin: EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 2.0),
                             decoration: BoxDecoration(
-                              shape: BoxShape.circle,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              shape: _current == index
+                                  ? BoxShape.rectangle
+                                  : BoxShape.rectangle,
                               color: _current == index
-                                  ? String_Values.primarycolor
+                                  ? String_Values.primarycolor.withOpacity(0.9)
                                   : Color.fromRGBO(0, 0, 0, 0.4),
                             ),
                           );
@@ -214,7 +484,7 @@ class _DashboardState extends State<Dashboard> {
 //   itemBuilder: (BuildContext context, int i) =>
 //       Card(
 //         elevation: 5,
-//         // child: Container(height:150,width:MediaQuery.of(context).size.width-58),
+//         // child: Container(height:130,width:MediaQuery.of(context).size.width-58),
 //         child: Container(
 //           width: 160.0,
 //           child: Column(
@@ -229,134 +499,243 @@ class _DashboardState extends State<Dashboard> {
 //         ),
 //       ),),
 
-                      SizedBox(height: MediaQuery.of(context).size.height / 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              "Offer Categories",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
+                      SizedBox(height: MediaQuery.of(context).size.height / 50),
+                      Container(
+                        color: Colors.red.withOpacity(0.2),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(
+                                    "Offer Categories",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(
+                                    "View All   >",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: String_Values.primarycolor,
+                                        fontWeight: FontWeight.w800),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              "View All   >",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.deepOrange,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GridView.count(
-                              physics: ScrollPhysics(),
-                              shrinkWrap: true,
-                              crossAxisCount: 2,
-                              childAspectRatio: 1,
-                              children: List.generate(4, (index) {
-                                return Padding(
+                            GridView.count(
+                                physics: ScrollPhysics(),
+                                shrinkWrap: true,
+                                crossAxisCount: 2,
+                                childAspectRatio: 1,
+                                children: List.generate(4, (index) {
+                                  return Container(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Card(
-                                      elevation: 2,
+                                      elevation: 5,
                                       clipBehavior: Clip.antiAlias,
-                                      child: Column(
+                                      child: Stack(
+                                        alignment: Alignment.center,
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: IconButton(
-                                              icon: Icon(
-                                                Icons.settings,
-                                                size: 40,
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(2.0),
+                                                child: Image.network(
+                                                  Categoryimages[index].url,
+                                                  height: height / 6,
+                                                ),
                                               ),
+                                              Column(
+                                                children: [
+                                                  Text(Categoryimages[index]
+                                                      .title),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        "Rs.${100 - ((100 * ((index + 1) * 15)) / 100)}  ",
+                                                        style: TextStyle(
+                                                            color: String_Values
+                                                                .primarycolor,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w800),
+                                                      ),
+                                                      Text(
+                                                        "Rs.100",
+                                                        style: TextStyle(
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .lineThrough),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Positioned(
+                                            left: 0,
+                                            top: 0,
+                                            child: Container(
+                                              height: 40,
+                                              width: 40,
+                                              child: Center(
+                                                child: Text(
+                                                  "${(index + 1) * 15}%\noff",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                              decoration: BoxDecoration(
+                                                  color: String_Values
+                                                      .primarycolor,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              height))),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text("Hand"),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text("Tools"),
-                                          ),
+                                          )
                                         ],
                                       ),
-// child: Stack(
-//     children: <Widget>[
-//       index<files.length?
-//       InkWell(
-//         onTap: (){
-//           showDialog(context: context,child:Image.file(files[index] ));
-//         },
-//         child: Image.file(files[index],
-//           width: 300,
-//           height: 300,
-//         ),
-//       ): Container(
-//         width: 300,
-//         height: 300,
-//         child: IconButton(
-//           icon: Icon(Icons.add,),
-//           onPressed: () {
-//             _onAddImageClick(index);
-//           },
-//         ),
-//       ),
-//
-//       index<files.length?
-//       Positioned(
-//           right: 5,
-//           top: 5,
-//           child: InkWell(
-//               child: Icon(
-//                 Icons.remove_circle,
-//                 size: 20,
-//                 color: Colors.red,
-//               ),
-//               onTap: () {
-//                 setState(() {
-//                   files.removeAt(index);
-//                   print(files);
-//                   // images.replaceRange(index, index + 1, ['Add Image']);
-//                 });
-//               })):Container()])),
-// );
-//   },
-                                    ));
-                              }))),
+                                    ),
+                                  );
+                                })),
+                          ],
+                        ),
+                      ),
                       SizedBox(height: MediaQuery.of(context).size.height / 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              "Best Offers for you",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
+                      Container(
+                        color: Colors.green.withOpacity(0.2),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(
+                                    "Best Offers for you",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(
+                                    "View All   >",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: String_Values.primarycolor,
+                                        fontWeight: FontWeight.w800),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              "Explore All   >",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.deepOrange,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ],
+                            GridView.count(
+                                physics: ScrollPhysics(),
+                                shrinkWrap: true,
+                                crossAxisCount: 2,
+                                childAspectRatio: 1,
+                                children: List.generate(4, (index) {
+                                  return Container(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Card(
+                                      elevation: 5,
+                                      clipBehavior: Clip.antiAlias,
+                                      child: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(2.0),
+                                                child: Image.network(
+                                                  Categoryimages[index].url,
+                                                  height: height / 6,
+                                                ),
+                                              ),
+                                              Column(
+                                                children: [
+                                                  Text(Categoryimages[index]
+                                                      .title),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        "Rs.${100 - ((100 * ((index + 1) * 15)) / 100)}  ",
+                                                        style: TextStyle(
+                                                            color: String_Values
+                                                                .primarycolor,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w800),
+                                                      ),
+                                                      Text(
+                                                        "Rs.100",
+                                                        style: TextStyle(
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .lineThrough),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Positioned(
+                                            left: 0,
+                                            top: 0,
+                                            child: Container(
+                                              height: 40,
+                                              width: 40,
+                                              child: Center(
+                                                child: Text(
+                                                  "${(index + 1) * 15}%\noff",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                              decoration: BoxDecoration(
+                                                  color: String_Values
+                                                      .primarycolor,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              height))),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                })),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -366,47 +745,48 @@ class _DashboardState extends State<Dashboard> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.category,
-                size: 25,
-              ),
-              label: 'Categories',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-                size: 25,
-              ),
-              label: 'Settings',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: 25,
-              ),
-              label: 'Profile',
-            ),
-          ],
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
-          selectedItemColor: String_Values.primarycolor,
-          iconSize: 40,
-          onTap: (value) {
-            setState(() {
-              _selectedIndex = value;
-            });
-          },
-          elevation: 5),
+
+//      bottomNavigationBar: BottomNavigationBar(
+//          items: const <BottomNavigationBarItem>[
+//            BottomNavigationBarItem(
+//              icon: Icon(
+//                Icons.home,
+//                size: 25,
+//              ),
+//              label: 'Home',
+//            ),
+//            BottomNavigationBarItem(
+//              icon: Icon(
+//                Icons.category,
+//                size: 25,
+//              ),
+//              label: 'Categories',
+//            ),
+//            BottomNavigationBarItem(
+//              icon: Icon(
+//                Icons.settings,
+//                size: 25,
+//              ),
+//              label: 'Settings',
+//            ),
+//            BottomNavigationBarItem(
+//              icon: Icon(
+//                Icons.person,
+//                size: 25,
+//              ),
+//              label: 'Profile',
+//            ),
+//          ],
+//          type: BottomNavigationBarType.fixed,
+//          currentIndex: _selectedIndex,
+//          selectedItemColor: String_Values.primarycolor,
+//          iconSize: 40,
+//          onTap: (value) {
+//            setState(() {
+//              _selectedIndex = value;
+//            });
+//          },
+//          elevation: 5),
     );
   }
 }
@@ -417,9 +797,9 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   final Container _tabBar;
 
   @override
-  double get minExtent => (AppBar().preferredSize.height * 2) + 10;
+  double get minExtent => (AppBar().preferredSize.height * 2.2) + 10;
   @override
-  double get maxExtent => (AppBar().preferredSize.height * 2) + 10;
+  double get maxExtent => (AppBar().preferredSize.height * 2.2) + 10;
 
   @override
   Widget build(
@@ -433,4 +813,10 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
     return false;
   }
+}
+
+class Categories {
+  String title;
+  String url;
+  Categories(this.title, this.url);
 }
