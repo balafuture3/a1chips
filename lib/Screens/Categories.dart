@@ -52,12 +52,13 @@ class CategoriesPageState extends State<CategoriesPage> {
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(2.0),
                                   child: Image.network(
                                     Categoryimages[index].url,
-                                    height: height / 9,
+                                    height: height / 10,
                                   ),
                                 ),
                                 Column(

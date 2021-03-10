@@ -1,3 +1,4 @@
+import 'package:a1chips/Screens/CategoryItemDetails.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/LoginPage.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      home: CategoryItemDetail(title: "Chips",),
     );
   }
 }

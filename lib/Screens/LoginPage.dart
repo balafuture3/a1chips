@@ -176,7 +176,7 @@ class LoginPageState extends State<LoginPage> {
                                 padding: EdgeInsets.only(
                                     left: width / 4, right: width / 4),
                                 child: Widgetsfield().myImageAsset("logo.png",
-                                    () {}, context, height / 4, width / 4)),
+                                    () {}, context, height / 4, width / 5)),
                             Container(
                               width: width,
                               padding: const EdgeInsets.only(right: 24.0),

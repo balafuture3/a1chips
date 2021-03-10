@@ -101,6 +101,11 @@ class _DashboardState extends State<Dashboard> {
               ),
               title: Text('Shop By Category'),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CategoriesPage()),
+
+                );
                 // Update the state of the app.
                 // ...
               },
@@ -544,6 +549,7 @@ class _DashboardState extends State<Dashboard> {
                                         alignment: Alignment.center,
                                         children: [
                                           Column(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
@@ -552,7 +558,7 @@ class _DashboardState extends State<Dashboard> {
                                                     const EdgeInsets.all(2.0),
                                                 child: Image.network(
                                                   Categoryimages[index].url,
-                                                  height: height / 6,
+                                                  height: height / 7,
                                                 ),
                                               ),
                                               Column(
@@ -663,6 +669,7 @@ class _DashboardState extends State<Dashboard> {
                                         alignment: Alignment.center,
                                         children: [
                                           Column(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
@@ -671,7 +678,7 @@ class _DashboardState extends State<Dashboard> {
                                                     const EdgeInsets.all(2.0),
                                                 child: Image.network(
                                                   Categoryimages[index].url,
-                                                  height: height / 6,
+                                                  height: height / 7,
                                                 ),
                                               ),
                                               Column(
